@@ -11,6 +11,7 @@ module Fastlane
 
         json = get_post_payload(params[:trigger_token],
                                 params[:workflow],
+                                params[:author],
                                 params[:build_message],
                                 params[:branch],
                                 params[:commit],
@@ -25,6 +26,7 @@ module Fastlane
       # Parameters:
       # - trigger_token: Bitrise.io trigger token
       # - workflow: Bitrise.io workflow to trigger (optional)
+      # - author: Describe who triggered the build
       # - build_message: Build message on Bitrise.io (optional)
       # - branch: Git branch to trigger (optional)
       # - commit: Git commit to trigger (optional)
@@ -32,7 +34,7 @@ module Fastlane
       # - environments: Environments variables hash to replace (optional)
       #
       # Returns the JSON post payload
-      def self.get_post_payload(trigger_token, workflow, build_message, branch, commit, tag, environments)
+      def self.get_post_payload(trigger_token, workflow, author, build_message, branch, commit, tag, environments)
         UI.message("Payload creation...")
         json_curl = {}
         payload = {}
@@ -41,6 +43,10 @@ module Fastlane
         hook_info["type"] = "bitrise"
         hook_info["build_trigger_token"] = trigger_token
         payload["hook_info"] = hook_info
+
+        unless author.nil?
+          payload["triggered_by"] = author
+        end
 
         build_params = {}
         unless workflow.nil?
@@ -179,6 +185,11 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :build_message,
                                   env_name: "BITRISE_BUILD_MESSAGE",
                                description: "Build message who'll appear on Bitrise.io build",
+                                  optional: true,
+                                      type: String),
+          FastlaneCore::ConfigItem.new(key: :author,
+                                  env_name: "BITRISE_AUTHOR",
+                               description: "Desribe who triggered the build it'll appear on Bitrise.io build",
                                   optional: true,
                                       type: String),
           FastlaneCore::ConfigItem.new(key: :environments,

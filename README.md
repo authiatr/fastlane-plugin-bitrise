@@ -25,6 +25,7 @@ It can help you to automatically trigger a build after a bump commit for instanc
 | `app_slug` | Bitrise application slug, avalaible on bitrise.io > your app > code | String | **Mandatory** | `BITRISE_APP_SLUG` |
 | `trigger_token` | Bitrise build trigger token, avalaible on bitrise.io > your app > code | String | **Mandatory** | `BITRISE_TRIGGER_TOKEN` |
 | `workflow` | Bitrise workflow to trigger, if not specified, it'll trigger the default one | String | Optional | `BITRISE_WORKFLOW` |
+| `author` | Desribe who triggered the build. It'll appear on the Bitrise.io build | String | Optional | `BITRISE_AUTHOR` |
 | `build_message` | Build message who'll appear on the Bitrise.io build | String | Optional | `BITRISE_BUILD_MESSAGE` |
 | `branch` | The git branch to build | String | Optional | `BITRISE_GIT_BRANCH` |
 | `commit` | The git commit hash to build | String | Optional | `BITRISE_GIT_COMMIT` |
@@ -52,12 +53,13 @@ bitrise(
 )
 ```
 
-To trigger a build with a specific workflow, a specific git branch, display a build message and override some environments variables execute the following command:
+To trigger a build with a specific workflow, a specific git branch, display a build message, the build author and override some environments variables execute the following command:
 ```
 bitrise(
     "app_slug": "YOUR_APP_SLUG",
     "trigger_token": "YOUR_TRIGGER_TOKEN",
     "workflow": "Beta",
+    "author": "Developer",
     "build_message": "Deploy build version 1.3.2 build number 11 to Beta test",
     "branch": "release/1.3.2",
     "environments": {
