@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.author        = 'Robin AUTHIAT'
   spec.email         = 'authiatr@gmail.com'
 
-  spec.summary       = 'Trigger a bitrise build'
+  spec.summary       = 'Fastlane plugin to trigger a bitrise build with some options'
   spec.homepage      = "https://github.com/authiatr/fastlane-plugin-bitrise"
   spec.license       = "MIT"
 
