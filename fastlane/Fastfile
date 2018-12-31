@@ -1,0 +1,13 @@
+lane :test do
+  bitrise(
+    app_slug: "YOUR_APP_SLUG",
+    trigger_token: "YOUR_TRIGGER_TOKEN",
+    workflow: "appstore",
+    branch: "release/1.2.0",
+    build_message: "Deploy version 1.2.0 to the AppStore Connect",
+    environments: {
+      "BUILD_CONFIGURATION" => "Production",
+      "CURRENT_SCHEME" => "YOUR_SCHEME"
+    }
+  )
+end
