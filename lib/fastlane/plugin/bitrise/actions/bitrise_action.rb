@@ -193,7 +193,6 @@ module Fastlane
                                   optional: true,
                                       type: String),
           FastlaneCore::ConfigItem.new(key: :environments,
-                                  env_name: "BITRISE_ENVIRONMENTS",
                                description: "Bitrise environments to replace, it'll override the previous environment variables specified. The Hash key has to be the environment variable key (without the $), the Hash value has to be environment variable value",
                                   optional: true,
                                       type: Hash,

@@ -30,7 +30,7 @@ It can help you to automatically trigger a build after a bump commit for instanc
 | `branch` | The git branch to build | String | Optional | `BITRISE_GIT_BRANCH` |
 | `commit` | The git commit hash to build | String | Optional | `BITRISE_GIT_COMMIT` |
 | `tag` | The git Tag to build | String | Optional | `BITRISE_GIT_TAG` |
-| `environments` | Bitrise environments to replace, it'll override the previous environment variables specified. The Hash key has to be the environment variable key (without the `$`), the Hash value has to be environment variable value | Hash | Optional | `BITRISE_ENVIRONMENTS` |
+| `environments` | Bitrise environments to replace, it'll override the previous environment variables specified. The Hash key has to be the environment variable key (without the `$`), the Hash value has to be environment variable value | Hash | Optional | **none** |
 
 ## Return values
 
