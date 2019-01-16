@@ -48,24 +48,24 @@ If an error is return by the bitrise.io API, the plugin will **throw an exceptio
 To trigger the default workflow set on Bitrise.io on the default git branch execute:
 ```
 bitrise(
-    "app_slug": "YOUR_APP_SLUG",
-    "trigger_token": "YOUR_TRIGGER_TOKEN"
+    app_slug: "YOUR_APP_SLUG",
+    trigger_token: "YOUR_TRIGGER_TOKEN"
 )
 ```
 
 To trigger a build with a specific workflow, a specific git branch, display a build message, the build author and override some environments variables execute the following command:
 ```
 bitrise(
-    "app_slug": "YOUR_APP_SLUG",
-    "trigger_token": "YOUR_TRIGGER_TOKEN",
-    "workflow": "Beta",
-    "author": "Developer",
-    "build_message": "Deploy build version 1.3.2 build number 11 to Beta test",
-    "branch": "release/1.3.2",
-    "environments": {
+    app_slug: "YOUR_APP_SLUG",
+    trigger_token: "YOUR_TRIGGER_TOKEN",
+    author: "Developer",
+    branch: "release/1.3.2",
+    build_message: "Deploy build version 1.3.2 build number 11 to Beta test",
+    environments: {
         "BUILD_CONFIGURATION" => "Production",        # Environment variable to override during Bitrise.io build
         "ANOTHER_ENVIRONMENT_VARIABLE" => "123456"    # Environment variable to override during Bitrise.io build
-    }
+    },
+    workflow: "Beta"
 )
 ```
 
